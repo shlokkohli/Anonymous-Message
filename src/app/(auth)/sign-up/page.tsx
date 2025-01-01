@@ -136,7 +136,7 @@ function page() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="email"{...field}/>
+                  <Input type="password" placeholder="password"{...field}/>
                 </FormControl>
                 <FormMessage />
                 </FormItem>)}

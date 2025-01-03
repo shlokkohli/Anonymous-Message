@@ -56,8 +56,7 @@ function page() {
       if(response?.url){
         router.replace('/dashboard')
       }
-
-      console.log("ye toh response hai", response)
+      
     } catch (error) {
 
       toast({

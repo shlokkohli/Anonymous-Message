@@ -29,7 +29,7 @@ export async function GET(request: Request){
         // now we create an aggregation pipeline to get all the messages that are sent to the current user
         const user = await UserModel.aggregate([
             { $match: {_id: userId}},
-            { $unwind: '$messages'},
+            { $unwind: { path: '$messages', preserveNullAndEmptyArrays: true }},
             { $sort: {'messages.createdAt' : -1} }, // sort the messages in ascending order (most recent message first)
             { $group: {_id: '$_id', messages: {$push: '$messages'} } } // group all the messages of a particular user together
         ])
@@ -47,7 +47,7 @@ export async function GET(request: Request){
         return Response.json(
             {
                 success: true,
-                message: user[0].messages,
+                message: user[0].messages || [],
             },
             { status: 200 }
         )

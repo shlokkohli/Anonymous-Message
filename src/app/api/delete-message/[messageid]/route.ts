@@ -27,7 +27,7 @@ export async function DELETE(request: Request, {params}: {params: {messageid: st
     try {
 
         const updateResult = await UserModel.updateOne(
-            { id: user._id},
+            { _id: user._id},
             { $pull: {messages: {_id: messageId}} } // jis specific id wale message ko delete karna hai usko messages array se hata do
         )
 

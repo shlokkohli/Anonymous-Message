@@ -19,8 +19,9 @@ function page() {
 
     const [messages, setMessages] = useState<Message[]>([]) // all the messages of the user will be stored in the messages
     const [isLoading, setIsLoading] = useState(false) // this is the in general is loading of the page
-    const [isSwitchLoading, SetIsSwitchLoading] = useState(false) // this makes sure whrn the user clicks the toggle and the server
+    const [isSwitchLoading, SetIsSwitchLoading] = useState(true) // this makes sure whrn the user clicks the toggle and the server
     //is taking time, they do not click the toggle again and again until the server replies with something (success or failure)
+    const [intialLoadComplete, setIntialLoadComplete] = useState(false) // this check whether the initial api call has finished
 
     const { toast } = useToast();
 
@@ -45,6 +46,9 @@ function page() {
 
     const { register, watch, setValue } = useForm({
         resolver: zodResolver(acceptMessageSchema),
+        defaultValues: {
+            acceptMessages: false
+        }
     })
 
     const handleDeleteMessage = (messageId: string) => {
@@ -80,7 +84,7 @@ function page() {
         }
     }
 
-    const Check_Has_User_Enabled_Fetching_Messages = async () => {
+    const Check_Whether_User_Has_Enabled_Fetching_Messages = async () => {
         SetIsSwitchLoading(true)
 
         try {
@@ -88,9 +92,15 @@ function page() {
             setValue('acceptMessages', response.data.isAcceptingMessages)
 
         } catch (error) {
-            console.log('some error occured')
-        } finally {
+            const axiosError = error as AxiosError<ApiResponse>;
+            toast({
+              title: 'Error',
+              description: axiosError.response?.data.message || 'Failed to fetch message settings',
+              variant: 'destructive',
+            });
+        }finally {
             SetIsSwitchLoading(false)
+            setIntialLoadComplete(true)
         }
     }
 
@@ -98,7 +108,7 @@ function page() {
         if(!session || !session.user) return // if there is no user, do not do anything
         console.log(session)
         // if the user is logged in, first check if the user has enabled for fetching new messages, then fetch new messages
-        Check_Has_User_Enabled_Fetching_Messages()
+        Check_Whether_User_Has_Enabled_Fetching_Messages()
         fetchNewMessages()
 
     }, [session])
@@ -143,22 +153,25 @@ function page() {
                 </div>
             </div>
 
-            <div className="mb-4">
-                <Switch
-                    {...register('acceptMessages')}
-                    disabled={isSwitchLoading}
-                    onCheckedChange={() => handleSwitchToggle()}
-                />
-                <span className="ml-2">
-                    Accpetance Message: {acceptMessages ? "On" : "Off"}
-                </span>
-            </div>
+            {intialLoadComplete && (
+                <div className="mb-4">
+                    <Switch
+                        {...register('acceptMessages')}
+                        checked={acceptMessages}
+                        disabled={isSwitchLoading}
+                        onCheckedChange={() => handleSwitchToggle()}
+                        />
+                    <span className="ml-2">
+                        Accpetance Message: {acceptMessages ? "On" : "Off"}
+                    </span>
+                </div>
+            )}
 
             <Button // this is the refresh button for refreshing fetch new messages
                 className="mt-4"
                 variant='outline'
                 onClick={(e) => {
-                    e.preventDefault
+                    e.preventDefault()
                     fetchNewMessages(true)
                 }}
             >

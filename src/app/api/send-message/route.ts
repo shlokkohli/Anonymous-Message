@@ -6,6 +6,7 @@ export async function POST(request: Request){
 
     await dbConnect();
 
+    // username of the user to whom the msg is to be sent
     const {username, content} = await request.json();
 
     try {
@@ -38,6 +39,7 @@ export async function POST(request: Request){
 
         // push this message in the user's message array
         user.messages.push(newMessage as Message)
+        await user.save()
 
         return Response.json(
             {

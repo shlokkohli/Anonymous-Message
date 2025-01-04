@@ -23,7 +23,6 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
     const handleDeleteConfirm = async () => {
 
         try {
-
             const response = await axios.delete<ApiResponse>(`/api/delete-message/${message._id}`)
 
             // if the message has been successfully deleted, call the onMessageDelete function

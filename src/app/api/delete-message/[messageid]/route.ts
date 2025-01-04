@@ -3,11 +3,11 @@ import { authOptions } from "../../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { User } from "next-auth";
-import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(request: NextRequest, { params }: { params: { messageid: string } }) {
-    const { messageid: messageId } = params; // jis message ko delete karna hai uski ID
+    // Access the messageId directly from params
+    const { messageid: messageId } = params;
 
     await dbConnect();
 

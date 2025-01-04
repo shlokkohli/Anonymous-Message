@@ -28,7 +28,7 @@ const page = () => {
     "What’s something small that brightens your day?",
   ])
 
-  let specialCharacter = '||';
+  const specialCharacter = '||';
 
   const parsedStringMessages = (generatedMessage: string): string[] => {
     return generatedMessage.split(specialCharacter)

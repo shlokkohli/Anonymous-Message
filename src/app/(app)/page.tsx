@@ -9,7 +9,7 @@ function page() {
     <main className='flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 text-slate-900'>
 
       <section className='text-center mb-8 md:mb-12'>
-        <h1 className='text-3xl md:text-5xl font-black "'>
+        <h1 className='text-3xl md:text-5xl font-black mx-auto'>
           Dive into the World of Anonymous Feedback
         </h1>
         <p className='mt-3 md:mt-4 text-base md:text-xl font-bold'>
@@ -26,10 +26,10 @@ function page() {
             <CarouselItem key={index}>
             <div className="p-1">
               <Card>
-                <CardHeader className="font-medium">
+                <CardHeader className="font-medium text-center">
                   {message.title}
                 </CardHeader>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <CardContent className="flex aspect-square items-center justify-center p-2 text-center">
                   <span className="text-lg font-semibold">{message.content}</span>
                 </CardContent>
               </Card>

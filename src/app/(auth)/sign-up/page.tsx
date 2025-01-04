@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useDebounceCallback, useDebounceValue } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { signUpSchema } from "@/schemas/signUpSchema"
@@ -73,7 +73,7 @@ function page() {
 
       console.error("Error in signup of user", error)
       const axiosError = error as AxiosError<ApiResponse>
-      let errorMessage = axiosError.response?.data.message;
+      const errorMessage = axiosError.response?.data.message;
 
       toast ({
         title: "Signup Failed",

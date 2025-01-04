@@ -1,25 +1,23 @@
 'use client'
 import MessageCard from "@/components/MessageCard"
 import { useToast } from "@/hooks/use-toast"
-import { Message, User } from "@/models/User"
+import { Message } from "@/models/User"
 import { acceptMessageSchema } from "@/schemas/acceptMessageSchema"
 import { ApiResponse } from "@/types/ApiResponse"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios, { AxiosError } from "axios"
 import { useSession } from "next-auth/react"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from '@/components/ui/button';
-import { Loader, Loader2, RefreshCcw } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
+import { Loader2, RefreshCcw } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
-import { useCopyToClipboard } from "usehooks-ts"
 
-function page() {
+function Page() {
 
     const [messages, setMessages] = useState<Message[]>([]) // all the messages of the user will be stored in the messages
     const [isLoading, setIsLoading] = useState(false) // this is the in general is loading of the page
-    const [isSwitchLoading, SetIsSwitchLoading] = useState(true) // this makes sure whrn the user clicks the toggle and the server
+    const [isSwitchLoading, setIsSwitchLoading] = useState(true) // this makes sure whrn the user clicks the toggle and the server
     //is taking time, they do not click the toggle again and again until the server replies with something (success or failure)
     const [intialLoadComplete, setIntialLoadComplete] = useState(false) // this check whether the initial api call has finished
 
@@ -59,7 +57,7 @@ function page() {
 
     const fetchNewMessages = async (refresh: boolean = false) => {
         setIsLoading(true)
-        SetIsSwitchLoading(true)
+        setIsSwitchLoading(true)
 
         try {
             const response = await axios.get('/api/get-messages')
@@ -80,12 +78,12 @@ function page() {
 
         } finally {
             setIsLoading(false)
-            SetIsSwitchLoading(false)
+            setIsSwitchLoading(false)
         }
     }
 
     const Check_Whether_User_Has_Enabled_Fetching_Messages = async () => {
-        SetIsSwitchLoading(true)
+        setIsSwitchLoading(true)
 
         try {
             const response = await axios.get('/api/accept-messages')
@@ -98,8 +96,8 @@ function page() {
               description: axiosError.response?.data.message || 'Failed to fetch message settings',
               variant: 'destructive',
             });
-        }finally {
-            SetIsSwitchLoading(false)
+        } finally {
+            setIsSwitchLoading(false)
             setIntialLoadComplete(true)
         }
     }
@@ -114,7 +112,7 @@ function page() {
     }, [session])
 
     const handleSwitchToggle = async () => {
-        SetIsSwitchLoading(true)
+        setIsSwitchLoading(true)
 
         try {
             const response = await axios.post<ApiResponse>('/api/accept-messages', {
@@ -132,7 +130,7 @@ function page() {
                 variant: "destructive"
               }); 
         } finally {
-            SetIsSwitchLoading(false)
+            setIsSwitchLoading(false)
         }
     }
 
@@ -200,4 +198,4 @@ function page() {
     )
 }
 
-export default page
+export default Page;

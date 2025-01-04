@@ -4,10 +4,11 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { User } from "next-auth";
 import mongoose from "mongoose";
+import { NextRequest } from "next/server";
 
-export async function DELETE(request: Request, { params }: { params: { messageid: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { messageid: string } }) {
 
-    const messageId = params.messageid // jis message ko delete karna hai uski ID
+    const { messageid: messageId } = params; // jis message ko delete karna hai uski ID
 
     await dbConnect();
 

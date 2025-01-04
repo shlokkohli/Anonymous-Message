@@ -4,62 +4,59 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { User } from "next-auth";
 import mongoose from "mongoose";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(request: NextRequest, { params }: { params: { messageid: string } }) {
-
     const { messageid: messageId } = params; // jis message ko delete karna hai uski ID
 
     await dbConnect();
 
-    const session = await getServerSession(authOptions)
-    const user: User = session?.user as User // this is the currently logged in user
+    const session = await getServerSession(authOptions);
+    const user: User = session?.user as User; // this is the currently logged in user
 
-    if(!session || !session.user){
-        return Response.json(
+    if (!session || !session.user) {
+        return NextResponse.json(
             {
                 success: false,
                 message: "Not authenticated"
             },
             { status: 401 }
-        )
+        );
     }
 
     try {
-
         const updateResult = await UserModel.updateOne(
-            { _id: user._id},
-            { $pull: {messages: {_id: messageId}} } // jis specific id wale message ko delete karna hai usko messages array se hata do
-        )
+            { _id: user._id },
+            { $pull: { messages: { _id: messageId } } } // jis specific id wale message ko delete karna hai usko messages array se hata do
+        );
 
         // if no message was deleted
-        if(updateResult.modifiedCount === 0){
-            return Response.json(
+        if (updateResult.modifiedCount === 0) {
+            return NextResponse.json(
                 {
                     success: false,
                     message: "Message not found or already deleted",
                 },
                 { status: 404 }
-            )
+            );
         }
 
         // if message was deleted
-        return Response.json(
+        return NextResponse.json(
             {
                 success: true,
                 response: "Message Deleted",
             },
             { status: 200 }
-        )
-        
+        );
+
     } catch (error) {
-        return Response.json(
+        return NextResponse.json(
             {
                 success: false,
                 message: "Error deleting message",
             },
             { status: 500 }
-        )
+        );
     }
-
 }

@@ -45,7 +45,7 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
 
   return (
 
-    <Card className="card-bordered">
+    <Card className="card-bordered text-[#E0E1DD] bg-slate-800">
       <CardHeader>
 
         <div className="flex justify-between items-center">
@@ -60,18 +60,18 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
 
             </AlertDialogTrigger>
 
-            <AlertDialogContent>
+            <AlertDialogContent className="text-white bg-slate-950">
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
+                <AlertDialogDescription className="text-white">
                   This action cannot be undone. This will permanently delete this message.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>
+                <AlertDialogCancel className="bg-slate-900 hover:bg-slate-900 hover:text-white">
                   Cancel
                 </AlertDialogCancel>
-                <AlertDialogAction onClick={handleDeleteConfirm}>
+                <AlertDialogAction className="bg-red-800 hover:bg-red-900" onClick={handleDeleteConfirm}>
                     Continue
                 </AlertDialogAction>
               </AlertDialogFooter>

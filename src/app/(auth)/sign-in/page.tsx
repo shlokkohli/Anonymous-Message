@@ -66,8 +66,8 @@ function page() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-slate-900 text-white">
+      <div className="w-full max-w-md p-8 space-y-8 bg-slate-800 border-2 border-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight lg:text-4xl mb-6">
           Welcome Back !
@@ -86,7 +86,9 @@ function page() {
               <FormItem>
                 <FormLabel>Email / Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="ID"{...field}/>
+                  <Input
+                    className="text-black"
+                    placeholder="ID"{...field}/>
                 </FormControl>
                 <FormMessage />
               </FormItem>)}
@@ -99,13 +101,16 @@ function page() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="password"{...field}/>
+                  <Input
+                    className="text-black"
+                    type="password"
+                    placeholder="password"{...field}/>
                 </FormControl>
                 <FormMessage />
                 </FormItem>)}
             />
 
-            <Button type="submit" className='w-full' disabled={isSubmitting}>
+            <Button type="submit" className='w-full bg-teal-700 hover:bg-teal-800 ' disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

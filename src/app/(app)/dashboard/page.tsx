@@ -43,7 +43,7 @@ function Page() {
         navigator.clipboard.writeText(profileURL)
         toast({
             title: "URL Copied",
-            description: "Profile URL has been copied to clipboard"
+            description: "Profile URL has been copied to clipboard",
         })
     }
 
@@ -139,7 +139,7 @@ function Page() {
     }
 
     return (
-        <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
+        <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-slate-900 rounded w-full max-w-6xl text-white">
             <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
             <div className="mb-4">
@@ -149,9 +149,12 @@ function Page() {
                         type="text"
                         value={profileURL}
                         disabled
-                        className="input input-bordered w-full p-2 mr-2 bg-slate-100"
+                        className="input input-bordered w-full p-2 mr-2 shadow-lg rounded-md bg-white text-black"
                     />
-                    <Button onClick={() => copyToClipboard()}>Copy</Button>
+                    <Button
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+                        onClick={() => copyToClipboard()}>Copy
+                    </Button>
                 </div>
             </div>
 
@@ -162,6 +165,7 @@ function Page() {
                         checked={acceptMessages}
                         disabled={isSwitchLoading}
                         onCheckedChange={() => handleSwitchToggle()}
+                        className="border-2 border-white"
                         />
                     <span className="ml-2">
                         Accpetance Message: {acceptMessages ? "On" : "Off"}
@@ -170,7 +174,7 @@ function Page() {
             )}
 
             <Button // this is the refresh button for refreshing fetch new messages
-                className="mt-4"
+                className="mt-4 bg-teal-800 border-none hover:bg-teal-900"
                 variant='outline'
                 onClick={(e) => {
                     e.preventDefault()
@@ -178,13 +182,13 @@ function Page() {
                 }}
             >
                 {isLoading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                 ) : (
-                    <RefreshCcw className="h-4 w-4" />
+                    <RefreshCcw className="h-4 w-4 text-white" />
                 ) }
             </Button>
 
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
                 {messages.length > 0 ? (
                     messages.map((message) => (
                         <MessageCard

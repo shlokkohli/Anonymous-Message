@@ -11,6 +11,12 @@ function Navbar() {
 
     const isLoading = status === 'loading'
 
+    const handleLogout = async () => {
+        await signOut({
+            callbackUrl: '/'
+        })
+    }
+
     return (
         <nav className='p-4 md:p-6 shadow-md bg-slate-800'>
             <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
@@ -20,7 +26,7 @@ function Navbar() {
                         <>
                             <span className='text-2xl mr-4 text-white'>Welcome, {user?.username || user?.email}</span>
                             <Button 
-                                onClick={() => signOut()} 
+                                onClick={() => handleLogout()} 
                                 className="border-none w-full md:w-auto bg-red-500 text-white hover:text-white hover:bg-red-600" 
                                 variant='outline'
                             >

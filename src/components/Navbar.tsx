@@ -28,12 +28,12 @@ function Navbar() {
                             </Button>
                         </>
                     ) : (
-                        <Link href='/sign-in'>
+                        <Link href='/sign-up'>
                             <Button 
                                 className="w-full md:w-auto bg-slate-900 text-white hover:bg-slate-800 hover:text-white" 
                                 variant={'outline'}
                             >
-                                Login
+                                Sign Up
                             </Button>
                         </Link>
                     )

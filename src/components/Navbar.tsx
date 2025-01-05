@@ -18,7 +18,7 @@ function Navbar() {
                 {!isLoading && (
                     session ? (
                         <>
-                            <span className='mr-4'>Welcome, {user?.username || user?.email}</span>
+                            <span className='text-2xl mr-4'>Welcome, {user?.username || user?.email}</span>
                             <Button 
                                 onClick={() => signOut()} 
                                 className="w-full md:w-auto bg-slate-900 text-white hover:text-white hover:bg-slate-800" 

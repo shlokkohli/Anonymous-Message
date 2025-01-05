@@ -31,7 +31,7 @@ function Page() {
         // Only run on the client side
         setBaseURL(`${window.location.protocol}//${window.location.host}`) // http://localhost3000
     }, [])
-    
+
     let profileURL: string;
     if(status === 'loading'){
         profileURL = 'Loading...'
@@ -109,7 +109,6 @@ function Page() {
 
     useEffect(() => {
         if(!session || !session.user) return // if there is no user, do not do anything
-        console.log(session)
         // if the user is logged in, first check if the user has enabled for fetching new messages, then fetch new messages
         Check_Whether_User_Has_Enabled_Fetching_Messages()
         fetchNewMessages()

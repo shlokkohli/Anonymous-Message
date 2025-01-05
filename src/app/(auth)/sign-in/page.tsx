@@ -38,8 +38,6 @@ function page() {
         password: data.password
       })
 
-      console.log(response)
-
       // if there is an error
       if(response?.error){
         toast({

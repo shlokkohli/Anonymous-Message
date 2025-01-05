@@ -124,12 +124,12 @@ const page = () => {
         />
         <div className='flex justify-center'>
           {isLoading ? (
-            <Button disabled className='text-white bg-teal-700'>
+            <Button disabled className='text-white bg-teal-700 hover:bg-teal-800'>
               <Loader2 className='mr-2 h-4 w-4 animate-spin text-white' />
               Please Wait
             </Button>
           ) : (
-          <Button className='text-white bg-teal-800 hover:text-white hover:bg-teal-800' type='submit'>
+          <Button className='text-white bg-teal-700 hover:bg-teal-800 hover:text-white' type='submit'>
             Send It
           </Button>
           ) }
@@ -141,13 +141,13 @@ const page = () => {
         <div className='space-y-2'>
           {suggestMessageLoading ? (
             <Button
-            className='my-4 bg-blue-800'
+            className='my-4 bg-blue-700 hover:bg-blue-800'
             disabled>
               Suggesting...
             </Button>
           ) : (
             <Button
-            className='my-4 bg-blue-800'
+            className='my-4 bg-blue-700 hover:bg-blue-800'
             onClick={() => fetchSuggestedMessages()}
             disabled={suggestMessageLoading}>
               Suggest Messages
@@ -182,7 +182,7 @@ const page = () => {
         <div className='text-center'>
           <div className="mb-4 text-sm text-teal-400">Get Your Message Board</div>
             <Link href={'/sign-up'} className='text-teal-400'>
-              <Button className="bg-teal-700 hover:bg-teal-600">Create Your Account</Button>
+              <Button className="bg-red-600 hover:bg-red-700">Create Your Account</Button>
             </Link>
             </div>
           </div>

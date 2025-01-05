@@ -45,11 +45,11 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
 
   return (
 
-    <Card className="card-bordered text-[#E0E1DD] bg-slate-800">
+    <Card className="card-bordered text-black bg-slate-800">
       <CardHeader>
 
         <div className="flex justify-between items-center">
-          <CardTitle className="overflow-y-auto mr-4">{message.content}</CardTitle>
+          <CardTitle className="overflow-y-auto mr-4 text-white">{message.content}</CardTitle>
 
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -81,7 +81,7 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
 
         </div>
 
-        <div className="text-sm">
+        <div className="text-sm text-white">
           {dayjs(message.createdAt).format('MMM D, YYYY h:mm A')}
         </div>
 

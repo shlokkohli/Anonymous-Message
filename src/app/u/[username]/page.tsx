@@ -156,6 +156,7 @@ const page = () => {
           <p>Click on any message below to select it.</p>
         </div>
 
+        {/* AI generated responses */}
         <Card className='mt-4 text-white bg-slate-900'>
           <CardHeader>
             <h1 className='text-xl font-semibold'>Messages</h1>
@@ -166,7 +167,7 @@ const page = () => {
                 key={index}
                 onClick={() => handleMessageClick(message)}
                 variant="outline"
-                className="mb-2 text-white bg-slate-800 border-none hover:bg-slate-200"
+                className="mb-2 text-white bg-slate-800 border-none hover:bg-slate-200 whitespace-normal h-auto text-left break-words"
               >
                 {message}
               </Button>

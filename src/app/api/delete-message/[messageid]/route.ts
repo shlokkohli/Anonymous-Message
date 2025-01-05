@@ -46,7 +46,7 @@ export async function DELETE( request: Request, { params }: { params: Promise<{ 
         return Response.json(
             {
                 success: true,
-                response: "Message Deleted",
+                message: "Message Deleted",
             },
             { status: 200 }
         )

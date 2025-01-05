@@ -6,7 +6,8 @@ import messages from "@/messages.json"
 
 function page() {
   return (
-    <main className='flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 text-red-500 bg-slate-900 min-h-[calc(100vh-85px)]'>
+    <main className='flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-slate-900 
+    min-h-[calc(100vh-85px)] text-white'>
 
       <section className='text-center mb-8 md:mb-12'>
         <h1 className='text-3xl md:text-5xl font-black mx-auto'>
@@ -19,13 +20,13 @@ function page() {
 
       <Carousel
         plugins={[Autoplay({ delay: 2000})]}
-        className="w-full max-w-xs">
+        className="w-full max-w-xs text-slate-900">
       <CarouselContent>
         {
           messages.map((message, index) => (
             <CarouselItem key={index}>
             <div className="p-1">
-              <Card className="text-red-500">
+              <Card className="text-white bg-slate-700">
                 <CardHeader className="font-medium text-center">
                   {message.title}
                 </CardHeader>

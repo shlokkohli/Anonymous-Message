@@ -5,9 +5,9 @@ import UserModel from "@/models/User";
 import { User } from "next-auth";
 import mongoose from "mongoose";
 
-export async function DELETE(request: Request, { params }: { params: { messageid: string } } & { json: () => Promise<any> }) {
-    
-    const messageId = params.messageid // jis message ko delete karna hai uski ID
+export async function DELETE( request: Request, { params }: { params: Promise<{ messageid: string }> } ) {    
+
+    const { messageid: messageId } = await params; // jis message ko delete karna hai uski ID
 
     await dbConnect();
 

@@ -20,13 +20,18 @@ function Page() {
     const [isSwitchLoading, setIsSwitchLoading] = useState(true) // this makes sure whrn the user clicks the toggle and the server
     //is taking time, they do not click the toggle again and again until the server replies with something (success or failure)
     const [intialLoadComplete, setIntialLoadComplete] = useState(false) // this check whether the initial api call has finished
+    const [baseURL, setBaseURL] = useState('')
 
     const { toast } = useToast();
 
     const { data: session, status } = useSession()
     const username = session?.user.username
 
-    const baseURL = `${window.location.protocol}//${window.location.host}` // http://localhost3000
+    useEffect(() => {
+        // Only run on the client side
+        setBaseURL(`${window.location.protocol}//${window.location.host}`) // http://localhost3000
+    }, [])
+    
     let profileURL: string;
     if(status === 'loading'){
         profileURL = 'Loading...'

@@ -180,7 +180,7 @@ const page = () => {
 
       <div className='my-6'>
         <div className='text-center'>
-          <div className="mb-4 text-sm text-teal-400">Get Your Message Board</div>
+          <div className="mb-4 text-sm text-red-600">Get Your Message Board</div>
             <Link href={'/sign-up'} className='text-teal-400'>
               <Button className="bg-red-600 hover:bg-red-700">Create Your Account</Button>
             </Link>

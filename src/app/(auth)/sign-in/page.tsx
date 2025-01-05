@@ -11,6 +11,7 @@ import { Loader2 } from "lucide-react"
 import { Button } from '@/components/ui/button';
 import { signInSchema } from "@/schemas/signInSchema"
 import { signIn } from "next-auth/react"
+import Link from "next/link"
 
 function page() {
 
@@ -123,6 +124,14 @@ function page() {
 
           </form>
         </Form>
+
+        <div className="text-center mt-4">
+          <p>Don't have an account?{' '}
+            <Link href="/sign-up" className="text-blue-600 hover:text-blue-700">
+              Sign up
+            </Link>
+          </p>
+        </div>
         
       </div>
     </div>

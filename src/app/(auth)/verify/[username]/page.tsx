@@ -54,8 +54,8 @@ function VerifyPage() {
 
   return (
 
-    <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-slate-900 text-white">
+      <div className="w-full max-w-md p-8 space-y-8 bg-slate-800 rounded-lg shadow-md border-white border-2">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Verify Your Account
@@ -73,10 +73,13 @@ function VerifyPage() {
                         <FormItem>
                             <FormLabel>Verification Code</FormLabel>
                             <FormControl>
-                                <Input {...field} />
+                                <Input
+                                  className="text-black"
+                                  placeholder="enter verification code"
+                                  {...field} />
                             </FormControl>
 
-                            <FormMessage />
+                            <FormMessage className="text-red-500" />
                         </FormItem>
                     )}
                 />

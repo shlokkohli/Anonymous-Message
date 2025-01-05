@@ -97,7 +97,7 @@ const page = () => {
   
 
   return (
-    <div className='container mx-auto my-8 p-6 max-w-4xl'>
+    <div className='container mx-auto my-8 p-6 max-w-4xl bg-slate-900 text-white shadow-2xl'>
       <h1 className='text-4xl font-bold text-center mb-6'>
         Public Profile Link
       </h1>
@@ -114,7 +114,7 @@ const page = () => {
               <FormControl>
                 <Textarea
                   placeholder='Write your anonymous message here'
-                  className='resize-none'
+                  className='resize-none text-black'
                   {...field}
                 />
               </FormControl>
@@ -124,12 +124,12 @@ const page = () => {
         />
         <div className='flex justify-center'>
           {isLoading ? (
-            <Button disabled>
-              <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+            <Button disabled className='text-white bg-teal-700'>
+              <Loader2 className='mr-2 h-4 w-4 animate-spin text-white' />
               Please Wait
             </Button>
           ) : (
-          <Button type='submit'>
+          <Button className='text-white bg-teal-800 hover:text-white hover:bg-teal-800' type='submit'>
             Send It
           </Button>
           ) }
@@ -141,13 +141,13 @@ const page = () => {
         <div className='space-y-2'>
           {suggestMessageLoading ? (
             <Button
-            className='my-4'
+            className='my-4 bg-blue-800'
             disabled>
               Suggesting...
             </Button>
           ) : (
             <Button
-            className='my-4'
+            className='my-4 bg-blue-800'
             onClick={() => fetchSuggestedMessages()}
             disabled={suggestMessageLoading}>
               Suggest Messages
@@ -156,7 +156,7 @@ const page = () => {
           <p>Click on any message below to select it.</p>
         </div>
 
-        <Card className='mt-4'>
+        <Card className='mt-4 text-white bg-slate-900'>
           <CardHeader>
             <h1 className='text-xl font-semibold'>Messages</h1>
           </CardHeader>
@@ -166,7 +166,7 @@ const page = () => {
                 key={index}
                 onClick={() => handleMessageClick(message)}
                 variant="outline"
-                className="mb-2"
+                className="mb-2 text-white bg-slate-800 border-none hover:bg-slate-200"
               >
                 {message}
               </Button>
@@ -179,14 +179,13 @@ const page = () => {
 
       <div className='my-6'>
         <div className='text-center'>
-          <div className="mb-4">Get Your Message Board</div>
-          <Link href={'/sign-up'}>
-            <Button>Create Your Account</Button>
-          </Link>
-        </div>
+          <div className="mb-4 text-sm text-teal-400">Get Your Message Board</div>
+            <Link href={'/sign-up'} className='text-teal-400'>
+              <Button className="bg-teal-700 hover:bg-teal-600">Create Your Account</Button>
+            </Link>
+            </div>
+          </div>
       </div>
-
-    </div>
   )
 }
 

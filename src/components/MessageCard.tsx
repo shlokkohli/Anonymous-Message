@@ -49,7 +49,7 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
       <CardHeader>
 
         <div className="flex justify-between items-center">
-          <CardTitle>{message.content}</CardTitle>
+          <CardTitle className="overflow-y-auto mr-4">{message.content}</CardTitle>
 
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -76,6 +76,7 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
+
           </AlertDialog>
 
         </div>
@@ -86,6 +87,7 @@ function MessageCard({ message, onMessageDelete}: MessageCardProps ) {
 
       </CardHeader>
       <CardContent></CardContent>
+
     </Card>
 
   )

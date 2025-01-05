@@ -86,8 +86,8 @@ function page() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-slate-900 text-white">
+      <div className="w-full max-w-md p-8 space-y-8 bg-slate-800 rounded-lg shadow-2xl border-2 border-gray-400">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight lg:text-4xl mb-6">
           Join Anonymous-Message
@@ -105,7 +105,9 @@ function page() {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} onChange={(e) => {field.onChange(e)
+                <Input placeholder="username"
+                className="text-black"
+                 {...field} onChange={(e) => {field.onChange(e)
                   debounced(e.target.value )}}/>
               </FormControl>
                 {isCheckingUsername && <Loader2 className="animate-spin" />}
@@ -123,7 +125,9 @@ function page() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="email"{...field}/>
+                  <Input
+                    className="text-black"
+                    placeholder="email"{...field}/>
                 </FormControl>
                 <FormMessage />
               </FormItem>)}
@@ -136,13 +140,16 @@ function page() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="password"{...field}/>
+                  <Input
+                    className="text-black"
+                    type="password"
+                    placeholder="password"{...field}/>
                 </FormControl>
                 <FormMessage />
                 </FormItem>)}
             />
 
-            <Button type="submit" className='w-full' disabled={isSubmitting}>
+            <Button type="submit" className='w-full bg-teal-700 hover:bg-teal-800' disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

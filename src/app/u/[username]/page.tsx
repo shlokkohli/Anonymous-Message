@@ -115,7 +115,7 @@ const page = () => {
               <FormControl>
                 <Textarea
                   placeholder='Write your anonymous message here'
-                  className='resize-none text-black'
+                  className='resize-none text-black relative z-20'
                   {...field}
                 />
               </FormControl>

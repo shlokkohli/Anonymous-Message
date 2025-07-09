@@ -3,20 +3,20 @@ import * as z from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { messageSchema } from '@/schemas/messageSchema'
-import { Message, User } from "@/models/User"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { useParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Textarea } from "@/components/ui/textarea"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios, { AxiosError } from 'axios'
 import { ApiResponse } from '@/types/ApiResponse';
 import { toast } from '@/hooks/use-toast'
 import { Loader2 } from 'lucide-react'
 import { Separator } from '@radix-ui/react-separator'
-import Link from 'next/link';
+import Navbar from '@/components/Navbar'
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const page = () => {
 
@@ -94,11 +94,12 @@ const page = () => {
   const handleMessageClick = (message: string) => {
     form.setValue('content', message)
   }
-  
 
   return (
-    <div className='container mx-auto my-8 p-6 max-w-4xl bg-slate-900 text-white shadow-2xl'>
-      <h1 className='text-4xl font-bold text-center mb-6'>
+    <div className='bg-slate-900 max-h-screen'>
+      <BackgroundBeams />
+    <div className='container mx-auto px-6 py-4 max-w-4xl bg-slate-900 text-white shadow-2xl rounded-xl border-red-500/10 max-h-screen'>
+      <h1 className='text-3xl font-bold text-center m-6'>
         Public Profile Link
       </h1>
 
@@ -110,7 +111,7 @@ const page = () => {
           name="content"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Send Anonymous Message to @{username}</FormLabel>
+              <FormLabel className='text-lg'>Send Anonymous Message to @{username}</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder='Write your anonymous message here'
@@ -167,7 +168,7 @@ const page = () => {
                 key={index}
                 onClick={() => handleMessageClick(message)}
                 variant="outline"
-                className="mb-2 text-white bg-slate-800 border-none hover:bg-slate-200 whitespace-normal h-auto text-left break-words"
+                className="mb-2 text-white bg-slate-800 border-none hover:bg-blue-700 whitespace-normal h-auto text-left break-words"
               >
                 {message}
               </Button>
@@ -177,15 +178,7 @@ const page = () => {
       </div>
 
       <Separator />
-
-      <div className='my-6'>
-        <div className='text-center'>
-          <div className="mb-4 text-sm text-red-600">Get Your Message Board</div>
-            <Link href={'/sign-up'} className='text-teal-400'>
-              <Button className="bg-red-600 hover:bg-red-700">Create Your Account</Button>
-            </Link>
-            </div>
-          </div>
+      </div>
       </div>
   )
 }

@@ -5,7 +5,6 @@ import Autoplay from 'embla-carousel-autoplay';
 import messages from "@/messages.json"
 import { Mail } from "lucide-react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { motion } from "framer-motion";
 import { Highlight } from "@/components/ui/hero-highlight";
 
 function page() {

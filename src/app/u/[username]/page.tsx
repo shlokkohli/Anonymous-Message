@@ -97,7 +97,11 @@ const page = () => {
 
   return (
     <div className='bg-slate-900 max-h-screen'>
-      <BackgroundBeams />
+
+      <div className="absolute inset-0 pointer-events-none">
+        <BackgroundBeams />
+      </div>
+
     <div className='container mx-auto px-6 py-4 max-w-4xl bg-slate-900 text-white shadow-2xl rounded-xl border-red-500/10 max-h-screen'>
       <h1 className='text-3xl font-bold text-center m-6'>
         Public Profile Link
@@ -115,7 +119,7 @@ const page = () => {
               <FormControl>
                 <Textarea
                   placeholder='Write your anonymous message here'
-                  className='resize-none text-black relative z-20'
+                  className='resize-none text-black bg-white z-20 relative'
                   {...field}
                 />
               </FormControl>

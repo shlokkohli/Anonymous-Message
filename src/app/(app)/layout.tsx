@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-900">
+    <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}>
           <div className="relative z-20">
             <Navbar />
